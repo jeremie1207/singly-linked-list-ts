@@ -9,7 +9,7 @@ class MySinglyLinkedList {
         this.size = 0;
     }
 
-    push(value : number) {
+    push(value : number) : this{
         const newNode = new MyNode(value);
         if(!this.head) {
             this.head = newNode;
@@ -20,6 +20,8 @@ class MySinglyLinkedList {
             this.tail = newNode; 
         }
         this.size++;
+
+        return this;
     }
 
     traversal() {
@@ -71,6 +73,22 @@ class MySinglyLinkedList {
 
         return current;
     }
+
+    unshift(value : number) : this{
+        const node = new MyNode(value);
+        if(!this.head) {
+            this.tail = node;
+        } else {
+            node.next = this.head;
+            
+        }
+
+        this.head = node;
+
+        this.size++;
+        
+        return this;
+    }
 }
 
 const list = new MySinglyLinkedList();
@@ -82,5 +100,8 @@ list.push(5);
 
 list.pop();
 list.shift();
+list.unshift(0);
 list.traversal();
+
+
 
