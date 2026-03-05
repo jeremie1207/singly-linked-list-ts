@@ -62,16 +62,11 @@ class MySinglyLinkedList {
         if(!this.head) return;
 
         const current = this.head;
-        
-        if(current === this.tail) {
-            this.head = null;
+        this.head = current.next;
+        this.size--;
+        if(this.size === 0) {
             this.tail = null;
-            this.size = 0;
-        } else {
-            this.head = current.next;
-            this.size--;
         }
-
         current.next = null;
 
         return current;
@@ -88,3 +83,4 @@ list.push(5);
 list.pop();
 list.shift();
 list.traversal();
+
