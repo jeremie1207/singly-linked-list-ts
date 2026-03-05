@@ -31,15 +31,16 @@ class MySinglyLinkedList {
         }
     }
 
-    pop(): MyNode | null {
+    pop(): MyNode | undefined {
         if(!this.head) {
-            return null;
+            return;
         }
         if(this.head === this.tail) {
+            const node = this.head;
             this.head = null;
             this.tail = null;
             this.size = 0;
-            return null;
+            return node;
         }
 
         let current = this.head;
@@ -56,6 +57,25 @@ class MySinglyLinkedList {
 
         return current;
     }
+
+    shift(): MyNode | undefined {
+        if(!this.head) return;
+
+        const current = this.head;
+        
+        if(current === this.tail) {
+            this.head = null;
+            this.tail = null;
+            this.size = 0;
+        } else {
+            this.head = current.next;
+            this.size--;
+        }
+
+        current.next = null;
+
+        return current;
+    }
 }
 
 const list = new MySinglyLinkedList();
@@ -66,4 +86,5 @@ list.push(4);
 list.push(5);
 
 list.pop();
-list.traversal();;
+list.shift();
+list.traversal();
