@@ -164,6 +164,29 @@ class MySinglyLinkedList {
 
         return true;
     }
+
+    remove(pos:number):boolean {
+
+        if(pos < 0 || pos >= this.size) return false;
+
+        if(pos === 0) {
+            this.shift();
+            return true;
+        }
+
+        if(pos === this.size) {
+            this.pop();
+            return true;
+        }
+
+        const prev = this.get(pos - 1)!;
+        const next = this.get(pos + 1)!;
+
+        prev.next = next;
+        this.size--;
+
+        return true;
+    }
     
 }
 
