@@ -122,6 +122,21 @@ class MySinglyLinkedList {
 
         return node ?? undefined;
     }
+
+    set(pos: number, newValue: number):boolean {
+
+        if(pos >= this.size || pos < 0) return false;
+
+        let node = this.head;
+
+        for(let i = 0; i < pos; i++) {
+            node = node!.next;
+        }
+
+        node!.value = newValue;
+
+        return true;
+    }
     
 }
 
@@ -139,7 +154,8 @@ list.push(5);
 
 // console.log(list.search(3));
 
-list.get(5);
+list.set(0, 6);
+list.traversal();
 
 
 
