@@ -1,58 +1,4 @@
-// Welcome to the TypeScript Playground, this is a website
-// which gives you a chance to write, share and learn TypeScript.
 
-// You could think of it in three ways:
-//
-//  - A location to learn TypeScript where nothing can break
-//  - A place to experiment with TypeScript syntax, and share the URLs with others
-//  - A sandbox to experiment with different compiler features of TypeScript
-
-const anExampleVariable = "Hello World"
-console.log(anExampleVariable)
-
-// To learn more about the language, click above in "Examples" or "What's New".
-// Otherwise, get started by removing these comments and the world is your playground.
-
-// interface User {
-//     name: string;
-//     id: number;
-// }
-
-// const user: User = {
-//     name: "Hayes", 
-//     id: 0,
-// }
-
-// class UserAccount {
-//     name: string;
-//     id: number;
-
-//     constructor(name: string, id: number) {
-//         this.name = name;
-//         this.id = id;
-//     }
-// }
-
-// const user: User = new UserAccount("Murphy", 1);
-
-// type MyBool = true | false;
-
-// type WindowStates = "open" | "closed" | "minimized";
-
-
-// const getLength = (obj: string | any[]) => obj.length;
-
-// console.log(getLength(['a', 'b', 1]));
-// console.log(getLength('jeremie'));
-
-// type StringArray = Array<string>;
-
-// const stringArray : StringArray = ['a', 'b', 'c', 'd'];
-
-// stringArray.forEach(str => {
-//     console.log(str);
-// })
-  
 
 class MyNode {
     value : number;
@@ -165,17 +111,15 @@ class MySinglyLinkedList {
     }
 
     get(pos : number) : MyNode | undefined {
-        if(!this.head || pos >= this.size) return undefined;
+        if(pos >= this.size || pos < 0) return undefined;
 
 
         let node = this.head;
 
         for(let i = 0; i < pos; i++) {
-            node = node.next;
+            node = node!.next;
         }
 
-        console.log(node);
-        
         return node ?? undefined;
     }
     
