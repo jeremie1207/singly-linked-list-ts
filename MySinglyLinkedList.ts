@@ -137,6 +137,33 @@ class MySinglyLinkedList {
 
         return true;
     }
+
+    insert(pos:number, val: number) : boolean {
+
+        if(pos > this.size || pos < 0) return false;
+
+        if(pos === 0) {
+            this.unshift(val);
+            return true;
+        }
+
+        if(pos === this.size) {
+            this.push(val);
+            return true;
+        }
+
+
+        const current = this.get(pos)!;
+        const prev = this.get(pos - 1)!;
+
+        const node = new MyNode(val);
+
+        prev.next = node;
+        node.next = current;
+        this.size++;
+
+        return true;
+    }
     
 }
 
@@ -154,7 +181,7 @@ list.push(5);
 
 // console.log(list.search(3));
 
-list.set(0, 6);
+list.insert(3, 17);
 list.traversal();
 
 
