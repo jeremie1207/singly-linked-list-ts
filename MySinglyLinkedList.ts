@@ -187,6 +187,37 @@ class MySinglyLinkedList {
 
         return true;
     }
+
+    print() {
+        const arr = [];
+        let current = this.head;
+
+        while(current) {
+            arr.push(current.value);
+            current = current.next;
+        }
+
+        console.log(arr);
+    }
+
+    reverse():this {
+        if(!this.head) return this;
+
+        let current = this.head;
+        let prev = null;
+        this.tail = current;
+
+        for(let i = 0; i < this.size; i++ ) {
+            let next_node = current.next!;
+            current.next = prev;
+            prev = current;
+            current = next_node;
+        }
+
+        this.head = prev;
+
+        return this;
+    }
     
 }
 
@@ -197,15 +228,6 @@ list.push(3);
 list.push(4);
 list.push(5);
 
-// list.pop();
-// list.shift();
-// list.unshift(0);
-// list.traversal();
+list.reverse();
 
-// console.log(list.search(3));
-
-list.insert(3, 17);
-list.traversal();
-
-
-
+list.print();
